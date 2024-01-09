@@ -1,0 +1,43 @@
+<div class="row text-end px-3">
+  <div class="text-center mb-1">
+    <h6>
+        {{ offset+1 }} -
+        @if(this.endOffset < this.resultsNumber){
+          {{ this.endOffset }}
+        }@else{
+          {{ this.resultsNumber }}
+        }
+        de {{ this.resultsNumber }}
+    </h6>
+  </div>
+
+  <div class="d-flex justify-content-center align-items-center">
+    <nav>
+      <ul class="pagination">
+        <li class="page-item">
+          <button (click)="handlePaginationPrevious()" class="btn btn-outline-dark mx-2">
+            &#8249;
+          </button>
+        </li>
+
+        <li class="page-item">
+          <select
+          class="form-select form-select-md"
+          [(ngModel)]="elementsPerPage"
+          (change)="onSelectChange()"
+          >
+          @for(option of this.selectOptions; track $index)
+          {<option value="{{ option }}">{{ option }}</option>}
+          </select>
+        <li class="page-item">
+
+        <li class="page-item">
+          <button (click)="handlePaginationNext()" class="btn btn-outline-dark mx-2">
+            &#8250;
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
